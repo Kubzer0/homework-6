@@ -28,16 +28,21 @@ export const loadTaskListFromDbAsyncAction = () => (dispatch, getState) => {
     database.ref(`/users/${uuid}`).on(
         'value',
         snapshot => {
-            const tasks = Object.entries(
-                snapshot.val()
-            ).map(entry => ({
-                ...entry[1],
-                key: entry[0]
-            }))
-            console.log(tasks)
-            dispatch(
-                loadTasks(tasks)
-            )
+            if (snapshot.val()) {
+                const tasks = Object.entries(
+                    snapshot.val()
+                ).map(entry => ({
+                    ...entry[1],
+                    key: entry[0]
+                }))
+                dispatch(
+                    loadTasks(tasks)
+                )
+            }
+            else {
+                dispatch(loadTasks([]))
+            }
+
         }
     )
 }
