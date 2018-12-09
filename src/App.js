@@ -1,13 +1,16 @@
 import React from 'react'
 
+import Auth from './Auth'
 
-class App extends React.Component {
-  render() {
-    return (
+const App = (props) => (
+  <div>
+    <Auth>
       <div>
+        Welcome!
       </div>
-    );
-  }
-}
+    </Auth>
+  </div>
+)
+
 
 export default App

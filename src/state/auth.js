@@ -1,6 +1,6 @@
 import { auth, database, googleProvider } from '../firebaseConfig'
 
-import { loadTextFromDbAsyncAction } from './userData'
+
 
 const LOG_IN = 'auth/LOG_IN'
 const LOG_OUT = 'auth/LOG_OUT'
@@ -13,7 +13,6 @@ export const initAuthChangeListeningAsyncAction = () => (dispatch, getState) => 
       if (user) {
         dispatch(logInAction(user))
         dispatch(saveLogInTimestampAsyncAction())
-        dispatch(loadTextFromDbAsyncAction())
       } else {
         dispatch(logOutAction())
       }
@@ -30,10 +29,8 @@ export const logInByGoogleAsyncAction = () => (dispatch, getState) => {
 }
 
 export const logInAsyncAction = () => (dispatch, getState) => {
-  const { auth: { email, password } } = getState()
-  // above destructuring is the same as
-  // const email = getState().auth.email
-  // const password = getState().auth.password
+   const email = getState().auth.email
+   const password = getState().auth.password
 
   auth.signInWithEmailAndPassword(email, password)
     .catch(error => {
