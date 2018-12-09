@@ -1,12 +1,13 @@
 import React from 'react'
 
 import Auth from './Auth'
+import ToDoList from './ToDoList';
 
 const App = (props) => (
   <div>
     <Auth>
       <div>
-        Welcome!
+        <ToDoList/>
       </div>
     </Auth>
   </div>
