@@ -26,6 +26,7 @@ const ToDoList = (props) => (
         label={'Add task to database'}
         onClick={props._saveTaskToDbAsyncAction}
       />
+      
     </div>
   )
 
