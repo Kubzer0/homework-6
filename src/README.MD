@@ -1,0 +1,1 @@
+This is simple ToDo app project made during my coding course. Project utilizes react, redux and firebase. To log-in use one of those accounts: example@example.com, example2@example.com or example3@example.com with password 'example' or use your google account.
