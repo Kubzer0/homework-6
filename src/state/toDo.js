@@ -66,6 +66,7 @@ export default (state = INITIAL_STATE, action) => {
         case LOAD_TASKS:
             return {
                 ...state,
+                text: '',
                 taskListFromDb: action.tasks
             }
         default:
