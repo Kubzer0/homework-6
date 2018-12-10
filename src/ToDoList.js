@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import MenuItem from 'material-ui/MenuItem'
+import Delete from 'material-ui/svg-icons/action/delete'
 
 import { addTaskAction, saveTaskToDbAsyncAction } from './state/toDo'
 
@@ -19,21 +20,48 @@ const mapDispatchToProps = dispatch => ({
 
 const ToDoList = (props) => (
     <div>
-        <TextField
-            value={props._text}
-            onChange={props._addTaskAction}
-        />
-        <RaisedButton
-            primary={true}
-            label={'Add task to database'}
-            onClick={props._saveTaskToDbAsyncAction}
-        />
+        <div>
+            <TextField
+                value={props._text}
+                onChange={props._addTaskAction}
+            />
+            <RaisedButton
+                primary={true}
+                label={'Add task to database'}
+                onClick={props._saveTaskToDbAsyncAction}
+            />
+        </div>
+        <div>
+            <TextField
+                value={'pass value from state'}
+                onChange={() => { }}
+            />
+            <RaisedButton
+                label={'Filter!'}
+                onClick={() => { }}
+            />
+        </div>
+        <div>
+            <RaisedButton
+                label={'Show completed!'}
+                onClick={() => { }}
+            />
+            <RaisedButton
+                label={'Show uncompleted!'}
+                onClick={() => { }}
+            />
+            <RaisedButton
+                label={'Show all!'}
+                onClick={() => { }}
+            />
+        </div>
         {props._taskListFromDb.map((task) =>
-        <MenuItem
-        key={task.key}
-        >
-        {task.text}
-        </MenuItem>)}
+            <MenuItem
+                key={task.key}
+                rightIcon={<Delete />}
+            >
+                {task.text}
+            </MenuItem>)}
     </div>
 )
 

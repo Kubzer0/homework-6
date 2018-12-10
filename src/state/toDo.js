@@ -1,6 +1,10 @@
 import { database } from '../firebaseConfig'
 
 const ADD_TASK = 'toDo/ADD_TASK'
+const FILTER_BY_NAME = 'toDo/FILTER_BY_NAME'
+const FILTER_BY_COMPLETED = 'toDo/FILTER_BY_COMPLETED'
+const TOGGLE_COMPLETED = 'toDo/TOGGLE_COMPLETED'
+const DELETE_TASK = 'toDO/DELETE_TASK'
 const LOAD_TASKS = 'toDo/LOAD_TASKS'
 
 const loadTasks = (tasks) => ({
@@ -53,7 +57,9 @@ export const stopListeningToDb = () => (dispatch, getState) => {
 
 const INITIAL_STATE = {
     text: '',
-    taskListFromDb: []
+    taskListFromDb: [],
+    filterText: '',
+    isCompleted: ''
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -68,6 +74,22 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 text: '',
                 taskListFromDb: action.tasks
+            }
+        case FILTER_BY_NAME:
+            return {
+                ...state
+            }
+        case FILTER_BY_COMPLETED:
+            return {
+                ...state
+            }
+        case TOGGLE_COMPLETED:
+            return {
+                ...state
+            }
+        case DELETE_TASK:
+            return {
+                ...state
             }
         default:
             return state
